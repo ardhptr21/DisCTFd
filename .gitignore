@@ -1,5 +1,5 @@
 **/__pycache__
-log
+*.log
 
 # python virtual environment
 venv

@@ -16,3 +16,8 @@ class CTFdDB:
             )
         """)
         CTFdDB.conn.commit()
+    
+    @staticmethod
+    def add_solve(user_id: int, chall_id: int):
+        CTFdDB.cursor.execute("INSERT INTO solves (user_id, chall_id) VALUES (%s, %s)", (user_id, chall_id))
+        CTFdDB.conn.commit()
