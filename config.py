@@ -1,4 +1,5 @@
-WEBHOOK_URL = "<discord webhook url>"
+DISCORD_WEBHOOK_URL = "<discord webhook url>"
+DISCORD_TOKEN = "<discord bot token>"
 
 TOKEN = "<token or secret key on your ctfd platform>"
 

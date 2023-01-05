@@ -1,13 +1,13 @@
 import aiohttp
 from discord import Embed, Webhook
 
-from config import WEBHOOK_URL
+from config import DISCORD_WEBHOOK_URL
 
 
 class CTFdSender:
     async def send(self, **kwargs):
         async with aiohttp.ClientSession() as session:
-            webhook = Webhook.from_url(WEBHOOK_URL, session=session)
+            webhook = Webhook.from_url(DISCORD_WEBHOOK_URL, session=session)
             await webhook.send(**kwargs)
     
     async def send_first_blood(self, chall_name, chall_category, user_name):
