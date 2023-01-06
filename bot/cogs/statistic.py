@@ -15,6 +15,11 @@ class Statistic(commands.Cog):
 
     @commands.command(name="scoreboard")
     async def scoreboard(self, ctx):
+        """
+        Shows top 20 users in scoreboard
+
+        **Usage:** `$scoreboard`
+        """
         try:
             users = s.get("/scoreboard/top/20").json()['data']
             await ctx.send(embed=scoreboard_embed(users))

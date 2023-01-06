@@ -15,6 +15,11 @@ class Challenges(commands.Cog):
 
     @commands.command(name="challs")
     async def challs(self, ctx):
+        """
+        List all challenges
+
+        **Usage:** `$challs`
+        """
         try:
             challs = s.get("/challenges").json()["data"]
             await ctx.send(embed=list_challs_embed(challs))
@@ -24,6 +29,16 @@ class Challenges(commands.Cog):
 
     @commands.command(name="chall")
     async def chall(self, ctx, chall_id: int):
+        """
+        Get a spesific challenge by id
+
+        **Usage:** `$chall <id>`
+
+        **Example:**
+        ```ansi
+        [2;32m$chall[0m [2;31m7[0m
+        ```
+        """
         try:
             res = s.get(f"/challenges/{chall_id}")
             if res.status_code == 404:
