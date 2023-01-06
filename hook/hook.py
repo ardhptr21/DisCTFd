@@ -2,6 +2,7 @@ import asyncio
 import logging
 
 from config import *
+from config import SLEEP_TIME
 from utils.session import session as s
 
 from .db import CTFdDB
@@ -12,8 +13,7 @@ from .sender import sender
 class CTFdHook:
 
     async def initial(self):
-        await sender.send(content="CTFdBot is online")
-        await asyncio.sleep(10)
+        await asyncio.sleep(SLEEP_TIME)
 
         challs = Challenge.challenges_solves()
         
@@ -36,7 +36,7 @@ class CTFdHook:
         asyncio.create_task(self.solves())
 
     async def solves(self):
-        await asyncio.sleep(10)
+        await asyncio.sleep(SLEEP_TIME)
 
         challs = Challenge.challenges_solves()
 
