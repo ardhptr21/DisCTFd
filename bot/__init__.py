@@ -17,6 +17,7 @@ def init():
     async def on_ready():
         await bot.add_cog(Challenges(bot))
         await bot.add_cog(Statistic(bot))
+        await bot.change_presence(activity=discord.Game(name="$help"))
         print(f"Logged in as {bot.user}")
 
     bot.run(token=DISCORD_TOKEN)
