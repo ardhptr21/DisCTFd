@@ -9,11 +9,14 @@ class CTFdDB:
     @staticmethod
     def init_db():
         CTFdDB.cursor.execute("""
+            DROP TABLE IF EXISTS solves;
+        """)
+        CTFdDB.cursor.execute("""
             CREATE TABLE IF NOT EXISTS solves (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 user_id INT NOT NULL,
                 chall_id INT NOT NULL
-            )
+            );
         """)
         CTFdDB.conn.commit()
     
