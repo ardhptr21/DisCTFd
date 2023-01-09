@@ -6,6 +6,7 @@ from config import DISCORD_TOKEN
 from .cogs.challenges import Challenges
 from .cogs.statistic import Statistic
 from .help import CTFdBotHelp
+from .handlers.match_command import match_command_handler
 
 def init():
     intents = discord.Intents.default()
@@ -19,5 +20,12 @@ def init():
         await bot.add_cog(Statistic(bot))
         await bot.change_presence(activity=discord.Game(name="$help"))
         print(f"Logged in as {bot.user}")
+    
+    @bot.event
+    async def on_message(message: discord.Message):
+        if isinstance(message.channel, discord.channel.DMChannel) and message.author != bot.user:
+            await match_command_handler(bot.command_prefix, message)
+        else:
+            await bot.process_commands(message)
 
     bot.run(token=DISCORD_TOKEN)
