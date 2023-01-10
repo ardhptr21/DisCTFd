@@ -12,7 +12,6 @@ class CTFdSender:
     
     async def send_first_blood(self, chall_name, chall_category, user_name):
         embed = Embed(title="🩸 First Blood", description=f"`{chall_category}: {chall_name}` has been pwned by `{user_name}`", color=0xff0000)
-        embed.set_image(url="https://media.tenor.com/MLkx8VkaXqUAAAAC/rambo-first-blood.gif")
         await self.send(embed=embed)
 
     async def send_solved(self, chall_name, chall_category , user_name):
