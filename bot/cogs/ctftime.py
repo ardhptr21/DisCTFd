@@ -18,12 +18,11 @@ class CTFTime(commands.Cog):
         self.local_timezone = pytz.timezone(TIMEZONE)
         self.gmt_offset = math.floor(self.local_timezone.utcoffset(
             datetime.now()).total_seconds() / 3600)
-        print(self.gmt_offset)
 
     @commands.command(name="events")
     async def events(self, ctx):
         """
-        List all events from CTFTime
+        Some of the closest events on CTFTime
 
         **Usage:** `$events`
         """
