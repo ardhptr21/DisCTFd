@@ -18,6 +18,6 @@ def help_bot_embed(mapping: dict[Cog | None, list[Command | None]]) -> Embed:
             name = cog.qualified_name if cog else "Others",
             value = content,
         )
-    embed.add_field(name="Direct Message", value="```$checkflag```")
+    embed.add_field(name="Direct Message", value="```checkflag```")
 
     return embed

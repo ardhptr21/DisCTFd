@@ -6,6 +6,12 @@ This is the main config for the bot and the webhook.
 !PLEASE DO NOT TYPE <> IN YOUR OWN CONFIGURATION!
 """
 
+# This is the debug mode, if you want to debug the bot, please set this to True
+DEBUG = True
+
+# This is the timezone of the bot, please use the valid timezone
+TIMEZONE = "Asia/Jakarta"
+
 # This is the webhook url for the discord server to broadcast first blood and solved message
 DISCORD_WEBHOOK_URL = "<discord webhook url>"
 
@@ -19,7 +25,7 @@ HOST = "<base url to your ctfd platform"
 TOKEN = "<token or secret key on your ctfd platform>"
 
 # This is the sleep time of fetching a solver from the CTFd instance/platform
-SLEEP_TIME = 10 # in seconds
+SLEEP_TIME = 10  # in seconds
 
 # This is the credentials for the database, using MYSQL
 DB_CREDENTIALS = {
