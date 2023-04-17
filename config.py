@@ -1,53 +1,51 @@
+from dotenv.main import load_dotenv
+import os
+
+load_dotenv()
+
 """
 Config
 
 This is the main config for the bot and the webhook.
-
-!PLEASE DO NOT TYPE <> IN YOUR OWN CONFIGURATION!
 """
 
-# This is the debug mode, if you want to debug the bot, please set this to True
-DEBUG = True
-
-# This is the timezone of the bot, please use the valid timezone
-TIMEZONE = "Asia/Jakarta"
-
-# This is the webhook url for the discord server to broadcast first blood and solved message
-DISCORD_WEBHOOK_URL = "<discord webhook url>"
-
-# This is the bot discord application token
-DISCORD_TOKEN = "<discord bot token>"
-
-# This is the host of your CTFd instance/platform
-HOST = "<base url to your ctfd platform"
-
-# This is the token admin that you generated from your CTFd instance/platform
-TOKEN = "<token or secret key on your ctfd platform>"
-
-# This is the sleep time of fetching a solver from the CTFd instance/platform
-SLEEP_TIME = 10  # in seconds
-
-# This is the credentials for the database, using MYSQL
-DB_CREDENTIALS = {
-    "host": "localhost",
-    "user": "root",
-    "password": "",
-    "database": "disctfd",
-}
-
-"""
-If you use docker, please use this instead
-
-DB_CREDENTIALS = {
-    "host": "db",
-    "user": "disctfd",
-    "password": "disctfd",
-    "database": "disctfd",
-}
-"""
-
+DEBUG = os.getenv("DEBUG", 'True') == 'True'
+TIMEZONE = os.getenv("TIMEZONE", 'Asia/Jakarta')
+SLEEP_TIME = int(os.getenv("SLEEP_TIME", 10)) # seconds
 # This is the option what runner do you want to run
 RUNNER = {
-    "BOT": True,
+    "BOT": False,
     "WEBHOOK": True,
+}
+
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", 'https://discord.com/api/webhooks/...')
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN", '...')
+
+HOST = os.getenv("HOST", 'https://ctfd.example.com')
+TOKEN = os.getenv("TOKEN", '...')
+
+DB_CREDENTIALS = {
+    "host": os.getenv("DB_HOST", 'db'),
+    "user": os.getenv("DB_USER", 'disctfd'),
+    "password": os.getenv("DB_PASSWORD", 'disctfd'),
+    "database": os.getenv("DB_DATABASE", 'disctfd')
+}
+
+"""
+Template:
+<category> = category of the challenge
+<name> = name of the challenge
+<username> = username of the solver
+
+Note: The description is support discord markdown
+"""
+NOTIFY_MESSAGE_STYLE = {
+    "FIRST_BLOOD": {
+        "title": ":drop_of_blood: First Blood",
+        "description": "`<name>` has been pwned by `<username>`",
+    },
+    "SOLVED": {
+        "title": ":white_check_mark: Challenge Solved",
+        "description": "`<name>` has been solved by `<username>`",
+    },
 }
