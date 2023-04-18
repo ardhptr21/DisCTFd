@@ -62,9 +62,10 @@ class CTFdHook:
                     if len(solvers) > len(ids):
                         new_solvers = solvers[len(ids):]
                         for solver in new_solvers:
-                            await sender.send_solved(chall.chall_name, chall.chall_category, solver['name'])
+                            if not ONLY_FIRST_BLOOD:
+                                await sender.send_solved(chall.chall_name, chall.chall_category, solver['name'])
+                                logging.info("SEND A `SOLVED` MESSAGE")
                             CTFdDB.add_solve(solver['account_id'], chall.chall_id)
-                            logging.info("SEND A `SOLVED` MESSAGE")
 
         asyncio.create_task(self.solves())
         

@@ -20,9 +20,9 @@ $ pip install -r requirements.txt
 $ pip3 install -r requirements.txt
 ```
 
-### 3. Change the config
+### 3. Env and Config
 
-Change the config in `config.py` file, and fill the config with your data
+Copy the `.env.example` to `.env` and fill the value, and also look at the `config.py` file for more configuration
 
 > NOTE: **Webhook** is for notify the first blood/solved challenge, and **Bot** is for get a info data from your host CTFd platform
 

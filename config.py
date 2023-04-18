@@ -14,9 +14,10 @@ TIMEZONE = os.getenv("TIMEZONE", 'Asia/Jakarta')
 SLEEP_TIME = int(os.getenv("SLEEP_TIME", 10)) # seconds
 # This is the option what runner do you want to run
 RUNNER = {
-    "BOT": False,
-    "WEBHOOK": True,
+    "BOT": os.getenv("RUNNER_BOT", 'True') == 'True',
+    "WEBHOOK": os.getenv("RUNNER_WEBHOOK", 'True') == 'True'
 }
+ONLY_FIRST_BLOOD = os.getenv("ONLY_FIRST_BLOOD", 'False') == 'True'
 
 DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", 'https://discord.com/api/webhooks/...')
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN", '...')
